@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CustomersApi.Entity
+namespace CustomersApi.Models
 {
-    public class Vehicle
+    public class VehicleDto
     {
         //[Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]

@@ -1,4 +1,8 @@
+using CustomersApi.Configuration;
 using CustomersApi.Data;
+using CustomersApi.Interfaces;
+using CustomersApi.Repository;
+using CustomersApi.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +16,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CustomerDbContext>(options => options.UseSqlServer(
      builder.Configuration.GetConnectionString("DefaultConnection")
     ));
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerService,CustomerService>();
+builder.Services.AddAutoMapper(c => c.AddProfile<MappingProfile>());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
